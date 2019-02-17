@@ -1,0 +1,31 @@
+﻿<Window x:Class="SteamAuthenticator.Trading.Trades"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        Icon="/Steam Authenticator;component/icon.ico"
+        Title="Trades" Height="300" Width="500" MinHeight="225" MinWidth="315" Closing="Window_Closing" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="185"/>
+        </Grid.ColumnDefinitions>
+        <ComboBox x:Name="accountSelection" Margin="10,10,95,0" VerticalAlignment="Top" Height="26" ToolTip="Which account you're viewing confirmations for" SelectionChanged="AccountSelection_SelectionChanged"/>
+        <Button x:Name="refreshTrades" Content="Refresh" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="80" Height="26" FontSize="12" Click="RefreshTrades_Click"/>
+
+        <ListBox x:Name="listBox" Margin="10,41,10,10" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" SelectionChanged="ListBox_SelectionChanged"/>
+
+        <TextBlock x:Name="lblTradeInfo" Grid.Column="1" Margin="10,10,10,150" TextWrapping="Wrap"/>
+
+        <Label x:Name="lblConfirm" Content="" Grid.Column="1" Margin="10,0,10,121" VerticalAlignment="Bottom" Height="24"/>
+        <Button x:Name="btnMoreInfo" Content="More info" Grid.Column="1" Margin="10,0,10,84" VerticalAlignment="Bottom" Click="BtnMoreInfo_Click"/>
+        <Button x:Name="btnAccept" Content="Accept" Grid.Column="1" Margin="10,0,10,47" VerticalAlignment="Bottom" Click="BtnAccept_Click"/>
+        <Button x:Name="btnDeny" Content="Deny" Grid.Column="1" Margin="10,0,10,10" VerticalAlignment="Bottom" Click="BtnDeny_Click"/>
+
+
+    </Grid>
+</Window>

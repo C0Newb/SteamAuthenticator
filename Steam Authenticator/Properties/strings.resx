@@ -1,0 +1,730 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MainWindowAutoEntry" xml:space="preserve">
+    <value>Auto Entry</value>
+  </data>
+  <data name="MainWindowAutoEntryDisabled" xml:space="preserve">
+    <value>Auto entry has been disabled.</value>
+  </data>
+  <data name="MainWindowAutoEntryEnabled" xml:space="preserve">
+    <value>Auto entry has been enabled.</value>
+  </data>
+  <data name="MainWindowDeactivateAccount" xml:space="preserve">
+    <value>Remove Steam Guard</value>
+  </data>
+  <data name="MainWindowDeactivateAccountCanceled" xml:space="preserve">
+    <value>Steam Guard was not removed, and no action was taken.</value>
+  </data>
+  <data name="MainWindowDeactivateAccountConfirm" xml:space="preserve">
+    <value>Would you like to remove Steam Guard completely?
+Yes - Remove Steam Guard completely.
+No - Switch back to Email authentication.</value>
+  </data>
+  <data name="MainWindowDeactivateAccountConfirmNo" xml:space="preserve">
+    <value>No - Switch back to Email authentication.</value>
+  </data>
+  <data name="MainWindowDeactivateAccountConfirmYes" xml:space="preserve">
+    <value>Yes - Remove Steam Guard completely.</value>
+  </data>
+  <data name="MainWindowDeactivateAccountFailed" xml:space="preserve">
+    <value>Steam Guard failed to deactivate.</value>
+  </data>
+  <data name="MainWindowDeactivateAccountRemoveConfirm" xml:space="preserve">
+    <value>Removing Steam Guard from {0}. Please enter this confirmation code: {1}</value>
+  </data>
+  <data name="MainWindowDeactivateAccountRemoveConfirmFailed" xml:space="preserve">
+    <value>Confirmation codes do not match. Steam Guard was not removed.</value>
+  </data>
+  <data name="MainWindowDeactivateAccountSuccessEmail" xml:space="preserve">
+    <value>Steam Guard switched to email. Your maFile will be deleted after hitting okay, (now would be the time to create a backup).</value>
+  </data>
+  <data name="MainWindowDeactivateAccountSuccessRemoved" xml:space="preserve">
+    <value>Steam Guard was removed completely. Your maFile will be deleted after hitting okay, (now would be the time to create a backup).</value>
+  </data>
+  <data name="MainWindowLoadAccountsPopulating" xml:space="preserve">
+    <value>Populating accounts list</value>
+  </data>
+  <data name="MainWindowLoadAccountsPopulatingAccount0" xml:space="preserve">
+    <value>Account 0/{0}</value>
+  </data>
+  <data name="MainWindowLoadAccountsPopulatingAccountX" xml:space="preserve">
+    <value>Account {0}/{1}</value>
+  </data>
+  <data name="MainWindowPopulateAccounts" xml:space="preserve">
+    <value>Populating the account listbox, please wait.</value>
+  </data>
+  <data name="MainWindowRemoveAccountManifest" xml:space="preserve">
+    <value>Remove from manifest</value>
+  </data>
+  <data name="MainWindowRemoveAccountManifestComplete" xml:space="preserve">
+    <value>{0} was removed from your manifest file. Again, you are still able to import the account using it's maFile.</value>
+  </data>
+  <data name="MainWindowRemoveAccountManifestConfirm" xml:space="preserve">
+    <value>This will remove {0} from your manifest file. This will not delete your maFile, and you can add the account back at anytime.</value>
+  </data>
+  <data name="MainWindowRemoveAccountManifestEncrypted" xml:space="preserve">
+    <value>You can't remove accounts from the manifest file while it is encrypted.</value>
+  </data>
+  <data name="MainWindowSessionRefresh" xml:space="preserve">
+    <value>Refresh account session</value>
+  </data>
+  <data name="MainWindowSessionRefreshed" xml:space="preserve">
+    <value>Your session has been refreshed.</value>
+  </data>
+  <data name="MainWindowSessionRefreshFailed" xml:space="preserve">
+    <value>Failed to refresh your session, try again soon.</value>
+  </data>
+  <data name="MainWindowSetupCheckForUpdate" xml:space="preserve">
+    <value>Checking for updates, please wait.</value>
+  </data>
+  <data name="MainWindowSetupDecrypt" xml:space="preserve">
+    <value>Decrypting manifest, please wait.</value>
+  </data>
+  <data name="MainWindowSetupFirstTime" xml:space="preserve">
+    <value>Setting up main window, please wait.</value>
+  </data>
+  <data name="MainWindowSetupSyncTime" xml:space="preserve">
+    <value>Syncing time with Steam, please wait.</value>
+  </data>
+  <data name="MainWindowSetupTrayIcon" xml:space="preserve">
+    <value>Setting up the tray icon, please wait.</value>
+  </data>
+  <data name="MainWindowTradingNotificationAcceptedMany" xml:space="preserve">
+    <value>{0} confirmations were accepted.</value>
+  </data>
+  <data name="MainWindowTradingNotificationAcceptedSingle" xml:space="preserve">
+    <value>A confirmation was accepted.</value>
+  </data>
+  <data name="MainWindowTradingNotificationAcceptedTMany" xml:space="preserve">
+    <value>Accepted new confirmations</value>
+  </data>
+  <data name="MainWindowTradingNotificationAcceptedTSingle" xml:space="preserve">
+    <value>Accepted a new confirmation</value>
+  </data>
+  <data name="MainWindowTradingNotificationPendingMany" xml:space="preserve">
+    <value>There are {0} pending requests.</value>
+  </data>
+  <data name="MainWindowTradingNotificationPendingSingle" xml:space="preserve">
+    <value>There is 1 pending request.</value>
+  </data>
+  <data name="MainWindowTradingNotificationPendingTMany" xml:space="preserve">
+    <value>Pending confirmations</value>
+  </data>
+  <data name="MainWindowTradingNotificationPendingTSingle" xml:space="preserve">
+    <value>Pending confirmation</value>
+  </data>
+  <data name="MainWindowUIUpdateButton" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="MainWindowUpdateFound" xml:space="preserve">
+    <value>There's a new update available for Steam Authenticator.</value>
+  </data>
+  <data name="MainWindowUpdateFoundT" xml:space="preserve">
+    <value>New update available</value>
+  </data>
+  <data name="MainWindowUpdateNotFound" xml:space="preserve">
+    <value>There was no new update found for Steam Authenticator.</value>
+  </data>
+  <data name="MainWindowUpdateNotFoundT" xml:space="preserve">
+    <value>No update found</value>
+  </data>
+  <data name="TrayIconCopyCode" xml:space="preserve">
+    <value>Copy the current auth code</value>
+  </data>
+  <data name="TrayIconHide" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="TrayIconQuit" xml:space="preserve">
+    <value>Quit</value>
+  </data>
+  <data name="TrayIconRestore" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="TrayIconTrades" xml:space="preserve">
+    <value>View trades</value>
+  </data>
+  <data name="BackEndUpdateManDownloaded" xml:space="preserve">
+    <value>Downloaded! Install now?</value>
+  </data>
+  <data name="BackEndUpdateManDownloadedT" xml:space="preserve">
+    <value>Steam Authenticator Updater</value>
+  </data>
+  <data name="BackEndUpdateManErrorExtracting" xml:space="preserve">
+    <value>Error while extracting updater!</value>
+  </data>
+  <data name="BackendUpdateManErrorT" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="BackEndUpdateManNewUpdate" xml:space="preserve">
+    <value>Update {0} is currently available! (You're using {1})</value>
+  </data>
+  <data name="BackEndUpdateManNewUpdateT" xml:space="preserve">
+    <value>New update available</value>
+  </data>
+  <data name="BrowseUpdateAvailable" xml:space="preserve">
+    <value>Available updates</value>
+  </data>
+  <data name="BrowseUpdateInfo" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="BrowseUpdateInstall" xml:space="preserve">
+    <value>Install</value>
+  </data>
+  <data name="btnCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="btnExit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="btnRefresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="btnSkip" xml:space="preserve">
+    <value>Skip</value>
+  </data>
+  <data name="btnSubmit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="CaptchaEnter" xml:space="preserve">
+    <value>Please enter the following captcha code:</value>
+  </data>
+  <data name="DownloaderDownloadInfo" xml:space="preserve">
+    <value>Downloaded {0} MB(s) of {1} MB(s) ({2}%)
+{3} KB/s</value>
+  </data>
+  <data name="ImportAccountNotFound" xml:space="preserve">
+    <value>Account not found inside manifest.json.
+Import failed.</value>
+  </data>
+  <data name="ImportComplete" xml:space="preserve">
+    <value>Account imported.</value>
+  </data>
+  <data name="ImportEnterPasskey" xml:space="preserve">
+    <value>Enter your encryption passkey if your .maFile is encrypted</value>
+  </data>
+  <data name="ImportFailedEncrypted" xml:space="preserve">
+    <value>Invalid content inside manifest.json!
+Import failed.</value>
+  </data>
+  <data name="ImportFailedEncryptedD" xml:space="preserve">
+    <value>Decyrption failed thus the import failed.</value>
+  </data>
+  <data name="ImportInvaildMaFile" xml:space="preserve">
+    <value>This file is not a valid SteamAuth maFile!
+Import failed.
+{0}</value>
+  </data>
+  <data name="ImportInvaildSteamID" xml:space="preserve">
+    <value>Invalid SteamID!</value>
+  </data>
+  <data name="ImportMissingEncryptionData" xml:space="preserve">
+    <value>manifest.json does not contain: {0}
+Import failed.</value>
+  </data>
+  <data name="ImportMissingManifest" xml:space="preserve">
+    <value>manifest.json is missing!
+Import failed.</value>
+  </data>
+  <data name="ImportNoEncryptionData" xml:space="preserve">
+    <value>manifest.json does not contain encrypted data.
+Your account may be unencrypted.
+Import failed.</value>
+  </data>
+  <data name="ImportNotice" xml:space="preserve">
+    <value>If you import an encrypted file, the manifest must be next to it</value>
+  </data>
+  <data name="ImportSelect" xml:space="preserve">
+    <value>Select .maFile to import</value>
+  </data>
+  <data name="ImportSelectT" xml:space="preserve">
+    <value>Select your maFile</value>
+  </data>
+  <data name="ImportSuccessD" xml:space="preserve">
+    <value>Account imported, but now your account is decrypted.</value>
+  </data>
+  <data name="ListSelectionPick" xml:space="preserve">
+    <value>Please select one, or click cancel.</value>
+  </data>
+  <data name="LoginAleadLinked" xml:space="preserve">
+    <value>This account already has a mobile authenticator linked to it.
+Remove the old authenticator from your Steam account before adding a new one.</value>
+  </data>
+  <data name="LoginBadCreds" xml:space="preserve">
+    <value>Error logging in: Username or password was incorrect.</value>
+  </data>
+  <data name="LoginBadRSA" xml:space="preserve">
+    <value>Error logging in: Steam returned "BadRSA."</value>
+  </data>
+  <data name="LoginEnterEmailCode" xml:space="preserve">
+    <value>Enter the Steam Guard code sent to your email.</value>
+  </data>
+  <data name="LoginEnterPasskey" xml:space="preserve">
+    <value>Please enter an encryption passkey. Leave blank or hit cancel to not encrypt.</value>
+  </data>
+  <data name="LoginEnterPhoneNumber" xml:space="preserve">
+    <value>Enter your phone number in the following format: +{cC} phoneNumber. EX: +1 555-555-555. (Please note Steam no longer accepts VOIP phone numbers)."</value>
+  </data>
+  <data name="LoginEnterRevocation" xml:space="preserve">
+    <value>Please enter your revocation code to ensure you've saved it.</value>
+  </data>
+  <data name="LoginEnterSMS" xml:space="preserve">
+    <value>Please input the SMS code sent to your phone.</value>
+  </data>
+  <data name="LoginErrorAddingNumber" xml:space="preserve">
+    <value>Error adding your phone number. Steam returned "GeneralFailure."</value>
+  </data>
+  <data name="LoginErrorT" xml:space="preserve">
+    <value>Login Error</value>
+  </data>
+  <data name="LoginFieldRequired" xml:space="preserve">
+    <value>Field is required.</value>
+  </data>
+  <data name="LoginGeneralFailure" xml:space="preserve">
+    <value>Error logging in:Steam returned "GeneralFailure." (Did you use a VOIP number?)</value>
+  </data>
+  <data name="LoginInfo" xml:space="preserve">
+    <value>This will activate Steam Authenticator on your Steam account. This requires a (non VOIP) phone number that can receive SMS messages.</value>
+  </data>
+  <data name="LoginInvaildPasskey" xml:space="preserve">
+    <value>That passkey is invalid, please enter your current passkey used to encrypt your other accounts.</value>
+  </data>
+  <data name="LoginRefreshedSession" xml:space="preserve">
+    <value>Your login session was refreshed.</value>
+  </data>
+  <data name="LoginRefreshInfo" xml:space="preserve">
+    <value>This will relog in to your Steam account, which usually fixes trade issues.</value>
+  </data>
+  <data name="LoginRevocationIncorrect" xml:space="preserve">
+    <value>Revocation code incorrect. Mobile authenticator has not been linked.</value>
+  </data>
+  <data name="LoginSuccessfulAdd" xml:space="preserve">
+    <value>Mobile authenticator successfully linked! (Revocation code: {0})</value>
+  </data>
+  <data name="LoginTooManyFailedAttempts" xml:space="preserve">
+    <value>Error logging in: Too many failed logins, try again later.</value>
+  </data>
+  <data name="LoginUnableToFinalize" xml:space="preserve">
+    <value>Unable to finalize this authenticator. The authenticator should not have been linked, but in the off-chance it was, please write down the revocation code: {0}</value>
+  </data>
+  <data name="LoginUnableToGenerateCodes" xml:space="preserve">
+    <value>Unable to generate the proper codes to finalize this authenticator. The authenticator should not have been linked, but in the off-chance it was, please write down the revocation code: {0}</value>
+  </data>
+  <data name="LoginUnableToSaveFile" xml:space="preserve">
+    <value>Unable to save mobile authenticator file, your account has not been linked.</value>
+  </data>
+  <data name="LoginWriteRevocation" xml:space="preserve">
+    <value>The mobile authenticator has not yet been linked. Before finalizing the authenticator, please write down your revocation code: {0}</value>
+  </data>
+  <data name="MainWindowUIAddAccount" xml:space="preserve">
+    <value>Add account</value>
+  </data>
+  <data name="MainWindowUIAuthenticatorSettings" xml:space="preserve">
+    <value>Authenticator settings</value>
+  </data>
+  <data name="MainWindowUIBrowseUpdates" xml:space="preserve">
+    <value>Browse updates</value>
+  </data>
+  <data name="MainWindowUIDEV" xml:space="preserve">
+    <value>Developer</value>
+  </data>
+  <data name="MainWindowUIDEVCrash" xml:space="preserve">
+    <value>"Crash"</value>
+  </data>
+  <data name="MainWindowUIDEVFAE" xml:space="preserve">
+    <value>Force auto login</value>
+  </data>
+  <data name="MainWindowUIDEVRefreshManifest" xml:space="preserve">
+    <value>Refresh manifest</value>
+  </data>
+  <data name="MainWindowUIDEVToastE" xml:space="preserve">
+    <value>Show toast (error)</value>
+  </data>
+  <data name="MainWindowUIDEVToastI" xml:space="preserve">
+    <value>Show toast (info)</value>
+  </data>
+  <data name="MainWindowUIEncryptionSettings" xml:space="preserve">
+    <value>Encryption settings</value>
+  </data>
+  <data name="MainWindowUIImportAndroid" xml:space="preserve">
+    <value>Import from Android</value>
+  </data>
+  <data name="MainWindowUIImportFile" xml:space="preserve">
+    <value>Import maFile</value>
+  </data>
+  <data name="MainWindowUILoadAccount" xml:space="preserve">
+    <value>Load accounts</value>
+  </data>
+  <data name="MainWindowUILogin" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="MainWindowUIQuit" xml:space="preserve">
+    <value>Quit</value>
+  </data>
+  <data name="MainWindowUISettings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SecuritySettingsChange" xml:space="preserve">
+    <value>change</value>
+  </data>
+  <data name="SecuritySettingsChanging" xml:space="preserve">
+    <value>Changing</value>
+    <comment>Used in "processing key" below</comment>
+  </data>
+  <data name="SecuritySettingsPassIncorrect" xml:space="preserve">
+    <value>Passkey incorrect!</value>
+  </data>
+  <data name="SecuritySettingsPasskeyButtonUpdate" xml:space="preserve">
+    <value>Update passkey</value>
+  </data>
+  <data name="SecuritySettingsPasskeyDoNotMatch" xml:space="preserve">
+    <value>Passkeys do not match!</value>
+  </data>
+  <data name="SecuritySettingsProcessedFailedPasskey" xml:space="preserve">
+    <value>Unable to {0} passkey!</value>
+  </data>
+  <data name="SecuritySettingsProcessingPasskey" xml:space="preserve">
+    <value>{0} passkey, please wait...</value>
+  </data>
+  <data name="SecuritySettingsRemove" xml:space="preserve">
+    <value>remove</value>
+  </data>
+  <data name="SecuritySettingsRemoved" xml:space="preserve">
+    <value>Passkey successfully removed.</value>
+  </data>
+  <data name="SecuritySettingsRemoving" xml:space="preserve">
+    <value>Removing</value>
+    <comment>Used in "processing key" below (3)</comment>
+  </data>
+  <data name="SecuritySettingsSet" xml:space="preserve">
+    <value>Set passkey</value>
+  </data>
+  <data name="SecuritySettingsUnableToRemove" xml:space="preserve">
+    <value>Unable to remove passkey! {0}</value>
+  </data>
+  <data name="SecuritySettingsUpdate" xml:space="preserve">
+    <value>Update passkey</value>
+  </data>
+  <data name="ManifestEnterKey" xml:space="preserve">
+    <value>Please enter your encryption passkey.</value>
+  </data>
+  <data name="ManifestKeyInvalid" xml:space="preserve">
+    <value>That passkey is invalid!</value>
+  </data>
+  <data name="ManifestPropmptSetupKey" xml:space="preserve">
+    <value>Enter a passkey below, or hit cancel to remain unencrypted.</value>
+  </data>
+  <data name="ManifestSetupCanceledT" xml:space="preserve">
+    <value>Notice</value>
+  </data>
+  <data name="ManifestSetupComplete" xml:space="preserve">
+    <value>Passkey successfully set.</value>
+  </data>
+  <data name="ManifestSetupConfirmKey" xml:space="preserve">
+    <value>Confirm new passkey.</value>
+  </data>
+  <data name="ManifestSetupFailed" xml:space="preserve">
+    <value>Passkey failed to set. Nothing has been encrypted.</value>
+  </data>
+  <data name="ManifestSetupKeysDoNotMatch" xml:space="preserve">
+    <value>Passkeys do not match!</value>
+  </data>
+  <data name="SettingsAllowBeta" xml:space="preserve">
+    <value>Allow beta builds</value>
+  </data>
+  <data name="SettingsAllowBetaHelp" xml:space="preserve">
+    <value>Include beta builds when searching for update</value>
+  </data>
+  <data name="SettingsAutoEntry" xml:space="preserve">
+    <value>Automatically enter auth code when logging in</value>
+  </data>
+  <data name="SettingsAutoEntryHelp" xml:space="preserve">
+    <value>Automatically enter your Steam Guard code into the "enter your auth code" window</value>
+  </data>
+  <data name="SettingsCheckForUpdates" xml:space="preserve">
+    <value>Check for update on startup</value>
+  </data>
+  <data name="SettingsCheckingInterval" xml:space="preserve">
+    <value>Checking interval (seconds)</value>
+  </data>
+  <data name="SettingsConfirmMarket" xml:space="preserve">
+    <value>Automatically confirm market transactions</value>
+  </data>
+  <data name="SettingsConfirmTrade" xml:space="preserve">
+    <value>Automatically confirm trades</value>
+  </data>
+  <data name="SettingsPeriodicallyCheck" xml:space="preserve">
+    <value>Periodically check accounts for confirmations</value>
+  </data>
+  <data name="SettingsSearch" xml:space="preserve">
+    <value>Display search field</value>
+  </data>
+  <data name="SettingsSortAlpha" xml:space="preserve">
+    <value>Sort accounts alphabetically</value>
+  </data>
+  <data name="SettingsStoreMaFiles" xml:space="preserve">
+    <value>Store accounts in .maFiles</value>
+  </data>
+  <data name="SettingsStoreMaFilesHelp" xml:space="preserve">
+    <value>Whether or not account info is stored in files or using the Windows Credential Locker</value>
+  </data>
+  <data name="SettingsUnsaved" xml:space="preserve">
+    <value>Wait, there are unsaved changes! Are you sure you want to leave and discard these changes?
+Yes - Leave and discard
+No - Save and leaveCancel - Dismiss this and go back</value>
+  </data>
+  <data name="SettingsUnsavedT" xml:space="preserve">
+    <value>Discard unsaved changes?</value>
+  </data>
+  <data name="SettingsUseDPAPI" xml:space="preserve">
+    <value>Use DPAPI to encrypt the manifest and maFiles</value>
+  </data>
+  <data name="SettingsUseDPAPIH" xml:space="preserve">
+    <value>Whether or not DPAPI is used to encrypt the maFile and manifest in addition to any other encryption methods</value>
+  </data>
+  <data name="TradeAccept" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="TradeCachedTime" xml:space="preserve">
+    <value>Last refreshed at {0}</value>
+  </data>
+  <data name="TradeDeny" xml:space="preserve">
+    <value>Deny</value>
+  </data>
+  <data name="TradeDetails" xml:space="preserve">
+    <value>Last refreshed at {0}
+
+
+{1}
+Request made {2}</value>
+  </data>
+  <data name="TradeDoubleAccept" xml:space="preserve">
+    <value>Press again to accept.</value>
+  </data>
+  <data name="TradeDoubleDeny" xml:space="preserve">
+    <value>Press again to deny.</value>
+  </data>
+  <data name="TradeGeneric" xml:space="preserve">
+    <value>Generic confirmation from {0}</value>
+  </data>
+  <data name="TradeHandlerFailed" xml:space="preserve">
+    <value>Failed to refresh confirmations for {0}! Please try refreshing the session for this account.
+Error: {1}</value>
+  </data>
+  <data name="TradeHandlerWGInvalidException" xml:space="preserve">
+    <value>Failed to refresh confirmations for {0} (WGInvalidException)! Please try refreshing the session for this account.</value>
+  </data>
+  <data name="TradeHandlerWGTokenExpired" xml:space="preserve">
+    <value>Failed to refresh confirmations for {0} (WGTokenExpired)! Please try refreshing the session for this account.</value>
+  </data>
+  <data name="TradeMarket" xml:space="preserve">
+    <value>Market transaction from {0}</value>
+  </data>
+  <data name="TradeMoreInfo" xml:space="preserve">
+    <value>Your account name: {0}
+ConfType: {1}
+Creator: {2}
+Description: {3}
+{4}
+Request made: {5}
+ID: {6}
+Key: {7}
+IntType: {8}
+Hash code: {9}</value>
+  </data>
+  <data name="TradeMoreInfoBTN" xml:space="preserve">
+    <value>More info</value>
+  </data>
+  <data name="TradeMoreInfoNA" xml:space="preserve">
+    <value>ConfType: {1}
+Creator: {2}
+Description: {3}
+{4}
+Request made: {5}
+ID: {6}
+Key: {7}
+IntType: {8}
+Hash code: {9}</value>
+  </data>
+  <data name="TradePleaseWait" xml:space="preserve">
+    <value>Please wait...</value>
+  </data>
+  <data name="WelcomeImportComplete" xml:space="preserve">
+    <value>All accounts and settings have been imported! Press "Ok" to continue.</value>
+  </data>
+  <data name="WelcomeImportCompleteT" xml:space="preserve">
+    <value>Importation complete</value>
+  </data>
+  <data name="WelcomeImportFile" xml:space="preserve">
+    <value>Import account(s) from a file</value>
+  </data>
+  <data name="WelcomeImportPhone" xml:space="preserve">
+    <value>Import my account from my phone</value>
+  </data>
+  <data name="WelcomeLabel" xml:space="preserve">
+    <value>Welcome to Steam Authenticator!</value>
+  </data>
+  <data name="WelcomeNoManifest" xml:space="preserve">
+    <value>This folder does not contain a manifest.json file or a maFile folder.
+Do you wish to use this folder?
+{0}</value>
+  </data>
+  <data name="WelcomeSelectFolder" xml:space="preserve">
+    <value>Select the folder of your old Steam Authenticator (or Steam Desktop Authenticator) install</value>
+  </data>
+  <data name="WelcomeSignIn" xml:space="preserve">
+    <value>Sign in to Steam</value>
+  </data>
+  <data name="ManifestSetupCanceled" xml:space="preserve">
+    <value>You have selected to not encrypt your files. If your maFile happen to be stolen anyone can get your auth codes.</value>
+  </data>
+  <data name="SecuritySettingsAutoUnlock" xml:space="preserve">
+    <value>Automatically unlock the security settings window</value>
+  </data>
+  <data name="SecuritySettingsAutoUnlockH" xml:space="preserve">
+    <value>When enabled this window is automatically unlocked and 'Save my password...' is enabled.</value>
+  </data>
+  <data name="SecuritySettingsConfirmNewPasskey" xml:space="preserve">
+    <value>Confirm new passkey</value>
+  </data>
+  <data name="SecuritySettingsNewPasskey" xml:space="preserve">
+    <value>New passkey</value>
+  </data>
+  <data name="SecuritySettingsRemoveBTN" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="SecuritySettingsSavePasswodH" xml:space="preserve">
+    <value>When enabled your password is remembered so that you do not have to enter it when Steam Authenticator opens</value>
+  </data>
+  <data name="SecuritySettingsSavePassword" xml:space="preserve">
+    <value>Save my password with Windows Credential Locker</value>
+  </data>
+  <data name="SecuritySettingsUseWFE" xml:space="preserve">
+    <value>Use Windows file encryption</value>
+  </data>
+  <data name="SecuritySettingsUseWFEH" xml:space="preserve">
+    <value>Whether or not Windows file encryption is used to encrypt the maFile and manifest in addition to any other encryption methods</value>
+  </data>
+  <data name="SettingsAutoRefreshSession" xml:space="preserve">
+    <value>Automatically refresh account session on startup</value>
+  </data>
+  <data name="SettingsAutoRefreshSessionH" xml:space="preserve">
+    <value>Automatically refresh your account sessions on startup</value>
+  </data>
+</root>

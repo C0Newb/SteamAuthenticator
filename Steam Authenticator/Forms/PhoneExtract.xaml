@@ -1,0 +1,33 @@
+﻿<Window x:Class="SteamAuthenticator.Forms.PhoneExtract"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        Icon="/Steam Authenticator;component/icon.ico"
+        Title="Import from Android device" Height="312" Width="330" ResizeMode="CanMinimize" Loaded="Window_Loaded" WindowStartupLocation="CenterOwner">
+
+    <Grid>
+        <Label Margin="10,10,10,0" VerticalAlignment="Top" FontFamily="Roboto" FontSize="11" Height="103" VerticalContentAlignment="Center">
+            <TextBlock>1) Plug in your device with a USB cable.<LineBreak/>
+                2) Go to Settings, then about phone.<LineBreak/>
+                3) Tap "Build number" 10 times to enable developer options.<LineBreak/>
+                4) Go back, and open "Developer options".<LineBreak/>
+                5) Enable "USB Debugging".<LineBreak/>
+                6) When prompted, tap "Allow" for debugging access.<LineBreak/>
+                7) If prompted, tap "Allow" on the root access prompt.</TextBlock>
+        </Label>
+        <Label Content="Log:" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" FontSize="11" Width="304" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+
+        <Button x:Name="btnConnectOverWifi" Content="Connect to ADB over WiFi" HorizontalAlignment="Left" Margin="10,241,0,0" Height="32" VerticalAlignment="Top" FontSize="12" Click="BtnConnectOverWifi_Click"/>
+        <Button x:Name="btnCheckDevice" Content="Check device" Margin="211,241,0,0" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="12" Click="BtnCheckDevice_Click"/>
+
+
+        <ScrollViewer x:Name="txtBlockScroller" Margin="10,146,10,47">
+            <TextBlock x:Name="txtBlock" Margin="10,146,10,47" TextWrapping="Wrap"/>
+        </ScrollViewer>
+    </Grid>
+</Window>
