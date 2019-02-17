@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="RuleSet" ToolsVersion="15.0">
+  <Include Path="basiccorrectnessrules.ruleset" Action="Default" />
+  <Include Path="basicdesignguidelinerules.ruleset" Action="Default" />
+  <Include Path="extendeddesignguidelinerules.ruleset" Action="Default" />
+  <Include Path="managedminimumrules.ruleset" Action="Default" />
+  <Include Path="minimumrecommendedrules.ruleset" Action="Default" />
+  <Include Path="securityrules.ruleset" Action="Default" />
+  <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+    <Rule Id="CA1001" Action="None" />
+    <Rule Id="CA1002" Action="None" />
+    <Rule Id="CA1009" Action="None" />
+    <Rule Id="CA1024" Action="None" />
+    <Rule Id="CA1026" Action="None" />
+    <Rule Id="CA1031" Action="None" />
+    <Rule Id="CA1032" Action="None" />
+    <Rule Id="CA1034" Action="None" />
+    <Rule Id="CA1051" Action="None" />
+    <Rule Id="CA1060" Action="None" />
+    <Rule Id="CA1403" Action="None" />
+    <Rule Id="CA1405" Action="None" />
+    <Rule Id="CA1410" Action="None" />
+    <Rule Id="CA1707" Action="None" />
+    <Rule Id="CA1726" Action="None" />
+    <Rule Id="CA1811" Action="None" />
+    <Rule Id="CA2201" Action="None" />
+    <Rule Id="CA2202" Action="None" />
+  </Rules>
+</RuleSet>

@@ -1,0 +1,85 @@
+﻿<Window x:Class="SteamAuthenticator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        Icon="icon.ico"
+        Title="Steam Authenticator" Height="340" Width="350" MinHeight="190" MinWidth="235" StateChanged="Window_StateChanged" Closing="Window_Closing" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo/>
+    </Window.TaskbarItemInfo>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <ContextMenu x:Key="trayMenu" Placement="MousePoint">
+                <Button x:Name="trayMenuRestore" Content="Restore"/>
+                <Separator/>
+                <Button x:Name="trayMenuTrades" Content="Trades"/>
+                <Button x:Name="trayMenuCopyCode" Content="Copy code to clip board"/>
+                <Separator/>
+                <Button x:Name="trayMenuQuit" Content="Quit"/>
+            </ContextMenu>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        
+        <Menu x:Name="menu" Height="48" VerticalAlignment="Top">
+            <MenuItem x:Name="menuFile" Header="File">
+                <MenuItem x:Name="menuFileAddAccount" Header="Add account">
+                    <MenuItem x:Name="menuFileNew" Header="Login" Click="MenuFileNew_Click" ToolTip="Login to your Steam account"/>
+                    <MenuItem x:Name="menuFileImportMaFile" Header="Import maFile" Click="MenuFileImportMaFile_Click" ToolTip="Import your account from a .maFile"/>
+                    <MenuItem x:Name="menuFileAndroid" Header="Import from Android" Click="MenuFileAndroid_Click" ToolTip="Import your account from the Steam app"/>
+                </MenuItem>
+                <Separator/>
+                <MenuItem x:Name="menuFileLoadAccounts"  Header="Load accounts" Click="MenuFileLoadAccounts_Click"/>
+                <Separator/>
+                <MenuItem x:Name="menuFileSettings" Header="Settings">
+                    <MenuItem x:Name="menuFileSettingsMain" Header="Authenticator settings" ToolTip="General settings" Click="MenuFileSettingsMain_Click"/>
+                    <MenuItem x:Name="menuFileSettingsEncryption" Header="Encryption settings" Click="MenuFileSettingsEncryption_Click" ToolTip="Encryption settings"/>
+                    <MenuItem x:Name="menuFileSettingsUpdate" Header="Browse updates" ToolTip="Browse updates to the program" Click="MenuFileSettingsUpdate_Click"/>
+                    <!--<MenuItem x:Name="menuFileSettingsTheme" Header="Theme" ToolTip="Edit theme options"/>-->
+                </MenuItem>
+                <MenuItem x:Name="menuFileDevMode" Header="Developer" IsEnabled="False" Visibility="Collapsed">
+                    <MenuItem x:Name="devShowToastI" Header="Show toast (info)" Click="DevShowToast_Click"/>
+                    <MenuItem x:Name="devShowToastE" Header="Show toast (error)" Click="DevShowToastError_Click"/>
+                    <Separator/>
+                    <MenuItem x:Name="devForceAE" Header="Force auto login" Click="DevForceAutoLogin_Click"/>
+                    <Separator/>
+                    <MenuItem x:Name="devCrash" Header="Crash" Click="DevForceCrash_Click"/>
+                    <Separator/>
+                    <MenuItem x:Name="devRefreshManifest" Header="Refresh manifest" Click="DevRefreshManifest_Click"/>
+                </MenuItem>
+                <Separator/>
+                <MenuItem x:Name="menuFileUpdate" Header="Check for update" Click="MenuUpdate_Click"/>
+                <Separator/>
+                <MenuItem x:Name="menuFileQuit" Header="Quit" Click="MenuFileQuit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Trades" Click="MenuOpenTrades_Click"/>
+        </Menu>
+
+        <ProgressBar x:Name="progressAuthLifespan" Height="4" Margin="0,53,0,0" VerticalAlignment="Top" Maximum="30" IsIndeterminate="True"/>
+
+        <ListBox x:Name="accounts" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0,62,0,39" KeyDown="Accounts_KeyDown">
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Trades" Click="ViewTrades_Click"/>
+                    <Separator/>
+                    <MenuItem Header="Login again" Click="LoginAgain_Click"/>
+                    <MenuItem Header="Refresh session" Click="RefreshSession_Click"/>
+                    <Separator/>
+                    <MenuItem Header="Remove from manifest" Click="RemoveFromManifest_Click"/>
+                    <MenuItem Header="Deactivate authenticator" Click="DeactiveAuthenticator_Click"/>
+                </ContextMenu>
+            </ListBox.ContextMenu>
+        </ListBox>
+
+        <Label x:Name="lblSearch" Content="Search:" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="txtSearch" Height="24" Margin="58,0,10,10" TextWrapping="Wrap" VerticalAlignment="Bottom" TextChanged="TxtSearch_TextChanged"/>
+    </Grid>
+</Window>
