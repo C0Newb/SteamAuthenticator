@@ -1,0 +1,21 @@
+﻿<Window x:Class="SteamAuthenticator.Forms.ImportAccount"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        Icon="/Steam Authenticator;component/icon.ico"
+        Title="Import Account" Height="165" Width="370" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Label x:Name="label" Content="Enter your encryption passkey if your .maFile is encrypted" Margin="10,10,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+        <PasswordBox x:Name="txtPass" Margin="10,34,10,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1" Content="If you import an encrypted file, the manifest must by next to it" Margin="10,62,10,0" VerticalAlignment="Top" HorizontalContentAlignment="Center"/>
+        <Button x:Name="btnImport" Content="Select .maFile to import" HorizontalAlignment="Left" Margin="10,0,0,10" Height="32" Click="BtnImport_Click" VerticalAlignment="Bottom"/>
+        <Button x:Name="btnCancel" Content="Cancel" Margin="0,0,10,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="74" Click="BtnCancel_Click"/>
+
+
+    </Grid>
+</Window>
