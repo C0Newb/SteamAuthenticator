@@ -92,7 +92,7 @@ namespace SteamAuthenticator.Forms
                     {
                         // Import maFile
                         #region Import maFile
-                        SteamGuardAccount maFile = JsonConvert.DeserializeObject<SteamGuardAccount>(fileContents);
+                        SteamGuardAccount maFile = JsonConvert.DeserializeObject<SteamGuardAccount>(Encryptor.DPAPIUnprotect(fileContents, Encryptor.AccountEntropy));
                         if (maFile.Session.SteamID != 0)
                         {
                             mManifest.SaveAccount(maFile, mManifest.Encrypted, passKey);
@@ -131,7 +131,7 @@ namespace SteamAuthenticator.Forms
 
                             try
                             {
-                                ImportManifest account = JsonConvert.DeserializeObject<ImportManifest>(ImportManifestContents);
+                                ImportManifest account = JsonConvert.DeserializeObject<ImportManifest>(Encryptor.DPAPIUnprotect(ImportManifestContents, Encryptor.AccountEntropy));
                                 //bool Import_encrypted = account.Encrypted;
 
 

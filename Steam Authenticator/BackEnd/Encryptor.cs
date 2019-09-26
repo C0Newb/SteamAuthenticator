@@ -139,6 +139,8 @@ namespace SteamAuthenticator.BackEnd
         /// <returns></returns>
         public static string DecryptData(SecureString password, string passwordSalt, string iv, string encryptedData)
         {
+            if (password == null)
+                throw new ArgumentException("Password is empty");
             if (password.Length <= 0)
             {
                 throw new ArgumentException("Password is empty");
@@ -204,6 +206,8 @@ namespace SteamAuthenticator.BackEnd
         /// <returns></returns>
         public static string EncryptData(SecureString password, string passwordSalt, string iv, string plaintext)
         {
+            if (password == null)
+                throw new ArgumentException("Password is empty");
             if (password.Length <= 0)
             {
                 throw new ArgumentException("Password is empty");

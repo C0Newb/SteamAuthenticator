@@ -485,7 +485,7 @@ namespace SteamAuthenticator.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This will relog in to your Steam account, which usually fixes trade issues..
+        ///   Looks up a localized string similar to This will re-login to your Steam account, which usually fixes trade issues..
         /// </summary>
         internal static string LoginRefreshInfo {
             get {
@@ -553,6 +553,15 @@ namespace SteamAuthenticator.Properties {
         internal static string LoginWriteRevocation {
             get {
                 return ResourceManager.GetString("LoginWriteRevocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Applying theme settings.
+        /// </summary>
+        internal static string MainWindowApplyTheme {
+            get {
+                return ResourceManager.GetString("MainWindowApplyTheme", resourceCulture);
             }
         }
         
@@ -708,6 +717,15 @@ namespace SteamAuthenticator.Properties {
         internal static string MainWindowPopulateAccounts {
             get {
                 return ResourceManager.GetString("MainWindowPopulateAccounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Processing startup arguments.
+        /// </summary>
+        internal static string MainWindowProcessArgs {
+            get {
+                return ResourceManager.GetString("MainWindowProcessArgs", resourceCulture);
             }
         }
         
@@ -1450,11 +1468,47 @@ namespace SteamAuthenticator.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dark theme.
+        /// </summary>
+        internal static string SettingsDarkTheme {
+            get {
+                return ResourceManager.GetString("SettingsDarkTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        internal static string SettingsExitBtn {
+            get {
+                return ResourceManager.GetString("SettingsExitBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Light theme.
+        /// </summary>
+        internal static string SettingsLightTheme {
+            get {
+                return ResourceManager.GetString("SettingsLightTheme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Periodically check accounts for confirmations.
         /// </summary>
         internal static string SettingsPeriodicallyCheck {
             get {
                 return ResourceManager.GetString("SettingsPeriodicallyCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apply.
+        /// </summary>
+        internal static string SettingsSaveBtn {
+            get {
+                return ResourceManager.GetString("SettingsSaveBtn", resourceCulture);
             }
         }
         
