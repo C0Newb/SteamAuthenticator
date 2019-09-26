@@ -1,0 +1,4 @@
+﻿Settings PER account > Each account uses global settings UNLESS custom settings are enabled (at which point custom settings can be applied)
+Command line interaction >??? quiet startup, reset, 'doomsday' protocall
+
+'Doomsday'/SA_Core protocall > Acts as failsafe, accounts load into simple viewer, users can manage the account (remove auth, refresh session, view authcode) and manage encryption methods. Users CAN NOT view trades, modify authenticator settings, add accounts, etc. Only the essentials (with already added accounts) are allowed. (Seprate app - SteamAuth account viewer ...? ? ?)

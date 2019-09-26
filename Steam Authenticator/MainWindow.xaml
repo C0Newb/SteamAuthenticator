@@ -34,7 +34,7 @@
                 <MenuItem x:Name="menuFileAddAccount" Header="Add account">
                     <MenuItem x:Name="menuFileNew" Header="Login" Click="MenuFileNew_Click" ToolTip="Login to your Steam account"/>
                     <MenuItem x:Name="menuFileImportMaFile" Header="Import maFile" Click="MenuFileImportMaFile_Click" ToolTip="Import your account from a .maFile"/>
-                    <MenuItem x:Name="menuFileAndroid" Header="Import from Android" Click="MenuFileAndroid_Click" ToolTip="Import your account from the Steam app"/>
+                    <!--<MenuItem x:Name="menuFileAndroid" Header="Import from Android" Click="MenuFileAndroid_Click" ToolTip="Import your account from the Steam app"/>-->
                 </MenuItem>
                 <Separator/>
                 <MenuItem x:Name="menuFileLoadAccounts"  Header="Load accounts" Click="MenuFileLoadAccounts_Click"/>

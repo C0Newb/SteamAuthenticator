@@ -1,7 +1,9 @@
-﻿using SteamAuthenticator.BackEnd;
+﻿using MaterialDesignThemes.Wpf;
+using SteamAuthenticator.BackEnd;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace SteamAuthenticator.Forms
 {
@@ -38,10 +40,14 @@ namespace SteamAuthenticator.Forms
             chkAllowBetaUpdates.Content = Properties.strings.SettingsAllowBeta;
             chkAllowBetaUpdates.ToolTip = Properties.strings.SettingsAllowBetaHelp;
             chkDisplaySearch.Content = Properties.strings.SettingsSearch;
-            chkSortAlpha.Content = Properties.strings.SettingsSortAlpha;
+            //chkSortAlpha.Content = Properties.strings.SettingsSortAlpha;
+            radDarkTheme.Content = Properties.strings.SettingsDarkTheme;
+            radLightTheme.Content = Properties.strings.SettingsLightTheme;
             chkAutoRefreshSession.Content = Properties.strings.SettingsAutoRefreshSession;
             chkAutoRefreshSession.ToolTip = Properties.strings.SettingsAutoRefreshSessionH;
-            
+
+            btnSave.Content = Properties.strings.SettingsSaveBtn;
+            btnExit.Content = Properties.strings.SettingsExitBtn;
         }
         private new void KeyUp(object sender, KeyEventArgs e)
         {
@@ -72,7 +78,12 @@ namespace SteamAuthenticator.Forms
             chkDevMode.IsChecked = manifest.DeveloperMode;
 
             chkDisplaySearch.IsChecked = manifest.DisplaySearch;
-            chkSortAlpha.IsChecked = manifest.SortAlpha;
+            //chkSortAlpha.IsChecked = manifest.SortAlpha;
+
+            if (manifest.BaseTheme == Theme.Light)
+                radLightTheme.IsChecked = true;
+            else
+                radDarkTheme.IsChecked = true;
 
             Check();
         }
@@ -97,8 +108,22 @@ namespace SteamAuthenticator.Forms
             manifest.DeveloperMode = (bool)chkDevMode.IsChecked;
 
             manifest.DisplaySearch = (bool)chkDisplaySearch.IsChecked;
-            manifest.SortAlpha = (bool)chkSortAlpha.IsChecked;
+            //manifest.SortAlpha = (bool)chkSortAlpha.IsChecked;
 
+            IBaseTheme themeBase = Theme.Dark;
+            if (radLightTheme.IsChecked == true)
+                themeBase = Theme.Light;
+            manifest.BaseTheme = themeBase;
+
+            // apply the new theme
+            Color primaryColor = manifest.PrimaryColor;
+            Color secondaryColor = manifest.AccentColor;
+            IBaseTheme baseTheme = manifest.BaseTheme;
+
+            ITheme theme = Theme.Create(baseTheme, primaryColor, secondaryColor);
+            PaletteHelper pHelper = new PaletteHelper();
+            pHelper.SetTheme(theme);
+            // okay we good
 
             manifest.Save();
 
@@ -141,6 +166,10 @@ namespace SteamAuthenticator.Forms
 
         private void Check()
         {
+            IBaseTheme themeBase = Theme.Dark;
+            if (radLightTheme.IsChecked == true)
+                themeBase = Theme.Light;
+
             if (manifest.PeriodicChecking == chkPeriodicChecking.IsChecked && //
                 manifest.PeriodicCheckingInterval == InteravalValue && //
                 manifest.AutoConfirmMarketTransactions == chkAutoConfirm_Market.IsChecked && //
@@ -151,7 +180,8 @@ namespace SteamAuthenticator.Forms
                 manifest.AllowBetaUpdates == chkAllowBetaUpdates.IsChecked && //
                 manifest.DeveloperMode == chkDevMode.IsChecked && //
                 manifest.DisplaySearch == chkDisplaySearch.IsChecked && //
-                manifest.SortAlpha == chkSortAlpha.IsChecked)
+                //manifest.SortAlpha == chkSortAlpha.IsChecked
+                manifest.BaseTheme == themeBase)
                 btnSave.IsEnabled = false;
             else
                 btnSave.IsEnabled = true;

@@ -9,15 +9,16 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
-using Windows.UI.Notifications;
 
 using SteamAuthenticator.Notification;
 using SteamAuthenticator.BackEnd;
 using SteamAuthenticator.Forms;
 using SteamAuthenticator.Trading;
 using SteamAuth;
-using SteamAuthenticator.Notification.ShellHelpers;
 using System.Security;
+
+using MaterialDesignThemes.Wpf;
+using System.Windows.Media;
 
 namespace SteamAuthenticator
 {
@@ -26,8 +27,9 @@ namespace SteamAuthenticator
     /// </summary>
 
     [ComVisible(true)]
-    [Guid("ddad094a-bb27-4630-a930-5a474381d246")]
+    [Guid("ddad094a-bb27-4630-a930-5a474381d246")] // This is the application's GUID, used for notification things
     [ClassInterface(ClassInterfaceType.None)]
+
     public partial class MainWindow : Window
     {
         #region
@@ -53,12 +55,15 @@ namespace SteamAuthenticator
         private AutoEntry autoEnter = new AutoEntry();
 
         private UpdateMan UpdateManager;
+
+        private string[] StartupArguments; // we process these AFTER setting up the window (unless '-q' is applied, '-q'/'-quiet')
+        private bool QuietStartup = false; // see above
         #endregion
 
         #region Notification stuff
         public void ToastActivated(string appUserModelId, string invokedArgs)
         {
-            Dispatcher.Invoke(() =>
+            Dispatcher.Invoke(() => // So this is what runs whenever someone 'activates' the toast notification (clicks on it)
             {
                 Activate();
 
@@ -72,11 +77,6 @@ namespace SteamAuthenticator
                         action = current.Substring(7);
                         break;
                     }
-                }
-                if (action=="showTrades")
-                {
-                    Trades tradeWindow = new Trades(tradeHandler);
-                    tradeWindow.Show(this);
                 }
                 switch (action)
                 {
@@ -105,8 +105,17 @@ namespace SteamAuthenticator
         {
             InitializeComponent();
 
+            if (args == null)
+                args = new string[0];
+            StartupArguments = args;
+            for (int i = 0; i != args.Length; ++i)
+            {
+                if (args[i] == "q")
+                    QuietStartup = true;
+                    
+            }
 
-            UpdateManager = new UpdateMan(this); // So it know which window is currently open
+            UpdateManager = new UpdateMan(this); // So it knows which window is currently open
             manifest = Manifest.GetManifest(); // Load the manifest
 
             Notifications.RegisterAppForNotificationSupport(); // Setup notification support
@@ -124,10 +133,10 @@ namespace SteamAuthenticator
 
             TimerSteamGuardBackground = new DispatcherTimer(DispatcherPriority.Send)
             {
-                Interval = new TimeSpan(0, 0, 15) // Tick every 15 seconds
-            }; // Background tick. This runs ONLY when SA is in the background and is used to refresh auth codes and initated autoEntry. (Runs every 15s).
+                Interval = new TimeSpan(0, 0, 5) // Tick every 5 seconds
+            }; // Background tick. This runs ONLY when SA is in the background and is used to refresh auth codes and initate autoEntry. (Runs every 5s).
             TimerSteamGuardBackground.Tick += TimerSteamGuardBackground_Tick;
-            TimerSteamGuardBackground.Start();
+            //TimerSteamGuardBackground.Start();
 
             TimerTradeChecking = new DispatcherTimer(DispatcherPriority.Background)
             {
@@ -139,7 +148,7 @@ namespace SteamAuthenticator
             menuFileAddAccount.Header = Properties.strings.MainWindowUIAddAccount;
             menuFileNew.Header = Properties.strings.MainWindowUILogin;
             menuFileImportMaFile.Header = Properties.strings.MainWindowUIImportFile;
-            menuFileAndroid.Header = Properties.strings.MainWindowUIImportAndroid;
+            //menuFileAndroid.Header = Properties.strings.MainWindowUIImportAndroid;
             menuFileSettings.Header = Properties.strings.MainWindowUISettings;
             menuFileSettingsMain.Header = Properties.strings.MainWindowUIAuthenticatorSettings;
             menuFileSettingsEncryption.Header = Properties.strings.MainWindowUIEncryptionSettings;
@@ -166,8 +175,13 @@ namespace SteamAuthenticator
                 menuFileDevMode.Visibility = Visibility.Visible;
             }
 
-            wait.Show(this);
-            wait.Focus();
+            if (!QuietStartup)
+            {
+                wait.Show(this);
+                wait.Focus();
+            }
+            else
+                Hide(); // see above, quiet startup
             wait.txtInfo.Text = Properties.strings.MainWindowSetupFirstTime;
 
             // Setup (icon)
@@ -226,9 +240,133 @@ namespace SteamAuthenticator
             if (manifest.PeriodicChecking)
                 TimerTradeChecking.Start(); // Start checking for trades, if enabled...
 
+            TimerTradeChecking_Tick(new object(), EventArgs.Empty); // Force a tick
+
+            wait.txtInfo.Text = Properties.strings.MainWindowApplyTheme;
+
+            // Theme
+            // Okay. So I don't have a formal way of chaning this, BUT there is a way to change this via the manifest itself.
+            // nevermind you can totally change the base theme color, but for the primary and secondary check the manifest
+            Color primaryColor = manifest.PrimaryColor;
+            Color secondaryColor = manifest.AccentColor;
+            IBaseTheme baseTheme = manifest.BaseTheme;
+
+            ITheme theme = Theme.Create(baseTheme, primaryColor, secondaryColor);
+            PaletteHelper pHelper = new PaletteHelper();
+            pHelper.SetTheme(theme);
+
+            wait.txtInfo.Text = Properties.strings.MainWindowProcessArgs;
+
+            // Approved arguments:
+            /*
+                -t, -trades, -viewtrades <accountName>: Open the trades window and focus on <accountName> (view the trades for <accountName>)
+                -q: Quiet startup
+                -RefreshSession, -rs <accountName>: Refresh <accountName>'s session
+                -RefreshLogin, -relogin, -rl <accountName>: Open the 'login again' window for <accountName>
+                -RemoveAccount, -rm <accountName>: Remove <accountName> from the manifest (only if 'ArgAllowRemove' is true)
+                -copycode, -cc <accountName>: If allowed via the manifest, use this to copy the current authcode for <accountName> into the clipboard. MUST ENABLE 'ArgAllowAuthCopying'
+                
+                -exit, -e: Exit Steam Authenticator after processing all arguments
+            */
+            bool exitOnComplete = false;
+            for (int i = 0; i != StartupArguments.Length; ++i)
+            {
+                if (StartupArguments[i].ToLower() == "-q" || StartupArguments[i].ToLower() == "-quiet")
+                { } // to skip this arg
+#if DEBUG
+                else if (StartupArguments[i].ToLower() == "-printarguments")
+                {
+                    string args = "";
+                    foreach (string arg in StartupArguments)
+                        args = args + Environment.NewLine + arg;
+                    MessageBox.Show(args);
+                }
+                else if (StartupArguments[i].ToLower() == "-debug")
+                    manifest.DeveloperMode = true;
+#endif
+                else if (StartupArguments[i].ToLower() == "-e")
+                    exitOnComplete = true;
+                else
+                {
+                    // Okay, so it's a account based arg
+                    bool accountFound = false;
+                    if (StartupArguments.Length > i + 1)
+                    {
+                        foreach (SteamGuardAccount account in allAccounts)
+                        {
+                            if (StartupArguments[i + 1] == account.AccountName)
+                            {
+                                // this be the account
+                                accountFound = true;
+                                string arg = StartupArguments[i].ToLower(); // it'll be nicer below
+                                i++;
+
+                                // Now process the arg itself
+                                if (arg == "-refreshsession" || arg == "-rs")
+                                    account.RefreshSession();
+                                else if (arg == "-refreshlogin" || arg == "-relogin" || arg == "-rl")
+                                {
+                                    wait.Hide();
+                                    PromptRefreshLogin(account);
+                                    wait.Show();
+                                }
+                                else if (arg == "-removeaccount" || arg == "-rm")
+                                {
+                                    if (!manifest.ArgAllowRemove)
+                                    {
+                                        try
+                                        {
+                                            if (manifest.Encrypted)
+                                                MessageBox.Show(Properties.strings.MainWindowRemoveAccountManifestEncrypted, Properties.strings.MainWindowRemoveAccountManifest, MessageBoxButton.OK, MessageBoxImage.Error);
+                                            else
+                                            {
+                                                MessageBoxResult res = MessageBox.Show(String.Format(Properties.strings.MainWindowRemoveAccountManifestConfirm, account.AccountName), Properties.strings.MainWindowRemoveAccountManifest, MessageBoxButton.OKCancel, MessageBoxImage.Information);
+                                                if (res == MessageBoxResult.OK)
+                                                {
+                                                    manifest.RemoveAccount(account, false);
+                                                    MessageBox.Show(String.Format(Properties.strings.MainWindowRemoveAccountManifestComplete, account.AccountName), Properties.strings.MainWindowRemoveAccountManifest, MessageBoxButton.OK, MessageBoxImage.Information);
+                                                    LoadAccountsList();
+                                                }
+                                            }
+                                        }
+                                        catch (Exception) { }
+                                    }
+
+                                }
+                                else if (arg == "-copycode" || arg == "-cc")
+                                {
+                                    if (!manifest.ArgAllowAuthCopy)
+                                        Clipboard.SetText(account.GenerateSteamGuardCode());
+                                }
+                                else if (arg == "-viewtrades" || arg == "-trades" || arg == "-t")
+                                {
+                                    try
+                                    {
+                                        wait.Hide();
+                                        tradeWindow.ShowDialog(account.AccountName, this);
+                                        wait.Show();
+                                    }
+                                    catch (SteamGuardAccount.WGTokenInvalidException)
+                                    { account.RefreshSession(); }
+                                    catch (SteamGuardAccount.WGTokenExpiredException)
+                                    { PromptRefreshLogin(account); }
+                                    catch (WebException) { }
+                                }
+                            }
+                        }
+                        if (!accountFound)
+                            MessageBox.Show("Sorry, but that account, \"" + StartupArguments[i + 1] + "\" was not found.");
+                    }
+                }
+            }
+
             // Done
             wait.Hide();
+
+            if (exitOnComplete)
+                this.Close();
         }
+
         private void Window_StateChanged(object sender, EventArgs e)
         {
             if (WindowState == WindowState.Minimized)
@@ -248,7 +386,7 @@ namespace SteamAuthenticator
             trayIcon.Visible = false;
             Environment.Exit(0);
         }
-        #endregion
+#endregion
 
         #region Tray icon context menu
         private void TrayIcon_DoubleClick(object sender, EventArgs e)
@@ -295,7 +433,7 @@ namespace SteamAuthenticator
                 Focus();
             }
         }
-        #endregion
+#endregion
 
         #region Listbox stuff
         private void CopyAuthCodeItemBox_Click(object sender, RoutedEventArgs e) { Clipboard.SetText(((Button)sender).Content.ToString()); }
@@ -453,7 +591,7 @@ namespace SteamAuthenticator
             }
             catch (Exception) { }
         }
-        #endregion
+#endregion
 
         #region Search
         private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -492,7 +630,7 @@ namespace SteamAuthenticator
         {
             return (key >= Key.D0 && key <= Key.D9) || (key >= Key.NumPad0 && key <= Key.NumPad9);
         }
-        #endregion
+#endregion
 
         #region Timers
         private async void TimerSteamGuardForeground_Tick(object sender, EventArgs e)
@@ -611,7 +749,7 @@ namespace SteamAuthenticator
 
                     if (confs.Count > 0)
                     {
-                        #region Notifications about the new trades
+#region Notifications about the new trades
                         if (priorConfirmations.Length < tradeHandler.Confirmations.Length)
                         {
                             if (confs.Count == 1)
@@ -629,20 +767,19 @@ namespace SteamAuthenticator
                                     "action=showTrades");
                             }
                         }
-
-                        if (acceptedCount == 1)
-                        {
-                            Notifications.Show(Properties.strings.MainWindowTradingNotificationAcceptedTSingle,
-                                Properties.strings.MainWindowTradingNotificationAcceptedSingle,
-                                NotificationIcon.Icon);
-                        }
-                        else if (acceptedCount > 1)
-                        {
-                            Notifications.Show(Properties.strings.MainWindowTradingNotificationAcceptedTMany,
-                                String.Format(Properties.strings.MainWindowTradingNotificationAcceptedMany, acceptedCount.ToString()),
-                                NotificationIcon.Icon);
-                        }
-                        #endregion
+#endregion
+                    }
+                    if (acceptedCount == 1)
+                    {
+                        Notifications.Show(Properties.strings.MainWindowTradingNotificationAcceptedTSingle,
+                            Properties.strings.MainWindowTradingNotificationAcceptedSingle,
+                            NotificationIcon.Icon);
+                    }
+                    else if (acceptedCount > 1)
+                    {
+                        Notifications.Show(Properties.strings.MainWindowTradingNotificationAcceptedTMany,
+                            String.Format(Properties.strings.MainWindowTradingNotificationAcceptedMany, acceptedCount.ToString()),
+                            NotificationIcon.Icon);
                     }
                 }
                 catch (SteamGuardAccount.WGTokenInvalidException) { }
@@ -652,12 +789,8 @@ namespace SteamAuthenticator
                         TimerTradeChecking.Start();
                 }
             }).Start();
-            if (true)
-            {
-
-            }
         }
-        #endregion
+#endregion
 
         #region Account stuff
         /// <summary>
@@ -868,7 +1001,7 @@ namespace SteamAuthenticator
         }).Start();
 
 
-        #endregion
+#endregion
 
         #region Menu clicks
         //Import
@@ -1005,7 +1138,7 @@ namespace SteamAuthenticator
         private void DevForceCrash_Click(object sender, RoutedEventArgs e) {}
         private void DevRefreshManifest_Click(object sender, RoutedEventArgs e) {}
 #endif
-        #endregion
+#endregion
 
         #region Keyboard shortcuts
         private static bool CtrlPressed() => Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
@@ -1014,6 +1147,9 @@ namespace SteamAuthenticator
         private static bool AltPressed() => Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt);
 
         /*
+            ctrl+<arrowUp>: move account up
+            ctrl+<arrowDown>: move account down
+
             ctrl+,: open settings
             ctrl+e: open encryption settings
             ctrl+u: open updates manager
@@ -1059,6 +1195,6 @@ namespace SteamAuthenticator
             else if (e.Key == Key.F5)
                 LoadAccountsList(true);
         }
-        #endregion
+#endregion
     }
 }

@@ -409,7 +409,7 @@ Remove the old authenticator from your Steam account before adding a new one.</v
     <value>Your login session was refreshed.</value>
   </data>
   <data name="LoginRefreshInfo" xml:space="preserve">
-    <value>This will relog in to your Steam account, which usually fixes trade issues.</value>
+    <value>This will re-login to your Steam account, which usually fixes trade issues.</value>
   </data>
   <data name="LoginRevocationIncorrect" xml:space="preserve">
     <value>Revocation code incorrect. Mobile authenticator has not been linked.</value>
@@ -726,5 +726,23 @@ Do you wish to use this folder?
   </data>
   <data name="SettingsAutoRefreshSessionH" xml:space="preserve">
     <value>Automatically refresh your account sessions on startup</value>
+  </data>
+  <data name="MainWindowApplyTheme" xml:space="preserve">
+    <value>Applying theme settings</value>
+  </data>
+  <data name="MainWindowProcessArgs" xml:space="preserve">
+    <value>Processing startup arguments</value>
+  </data>
+  <data name="SettingsDarkTheme" xml:space="preserve">
+    <value>Dark theme</value>
+  </data>
+  <data name="SettingsExitBtn" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="SettingsLightTheme" xml:space="preserve">
+    <value>Light theme</value>
+  </data>
+  <data name="SettingsSaveBtn" xml:space="preserve">
+    <value>Apply</value>
   </data>
 </root>

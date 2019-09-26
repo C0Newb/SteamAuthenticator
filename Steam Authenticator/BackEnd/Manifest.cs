@@ -7,13 +7,13 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Security;
+using System.Windows.Media;
+using MaterialDesignThemes.Wpf;
 
 namespace SteamAuthenticator.BackEnd
 {
     public class Manifest
     {
-        // TO DO: DPAPI both the manifest but also maFiles before saving them.
-
 
         /// <summary>
         /// The version of the manifest file.
@@ -35,7 +35,7 @@ namespace SteamAuthenticator.BackEnd
         public static bool UseDPAPI { get; set; } = false;
 
         /// <summary>
-        /// Not yet included in settings window, but is used. (Runs File.Encrypt(so-so file) on any file saved)
+        /// If <see langword="true"/>, all files are encrypted using the EFS. (Runs File.Encrypt(so-so file) on any file saved)
         /// </summary>
         [JsonProperty("UseWindowsFileEncryption")]
         public static bool UseWindowsFileEncryption { get; set; } = false;
@@ -140,6 +140,27 @@ namespace SteamAuthenticator.BackEnd
         [JsonProperty("beta_updates")]
         public bool AllowBetaUpdates { get; set; } = false;
 
+        /// <summary>
+        /// This controls the current theme's primary color
+        /// </summary>
+        [JsonProperty("primaryColor")]
+        public Color PrimaryColor { get; set; } = Colors.Teal;
+        /// <summary>
+        /// This controls the current theme's accent color
+        /// </summary>
+        [JsonProperty("accentColor")]
+        public Color AccentColor { get; set; } = Colors.Pink;
+        [JsonProperty("baseTheme")]
+        public IBaseTheme BaseTheme { get; set; } = Theme.Dark;
+
+
+        // Argument security
+        [JsonProperty("ArgAllowAuthCopy")]
+        public bool ArgAllowAuthCopy { get; } = false;
+        [JsonProperty("ArgAllowRemove")]
+        public bool ArgAllowRemove { get; } = false;
+
+
 
         private static Manifest _manifest { get; set; }
 
@@ -196,6 +217,10 @@ namespace SteamAuthenticator.BackEnd
 
                 _manifest.RecomputeExistingEntries();
 
+#if !DEBUG
+                _manifest.DeveloperMode = false;
+#endif
+
                 return _manifest;
             }
             catch (Exception)
@@ -226,6 +251,11 @@ namespace SteamAuthenticator.BackEnd
                 CheckForUpdates = true,
                 AllowBetaUpdates = false,
                 Entries = new List<ManifestEntry>(),
+
+                BaseTheme = Theme.Dark,
+                PrimaryColor = Colors.Teal,
+                AccentColor = Colors.Pink,
+
                 FirstRun = true
             };
 
