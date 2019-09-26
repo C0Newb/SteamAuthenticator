@@ -13,7 +13,6 @@ namespace SteamAuthenticator.BackEnd
 {
     class UpdateMan
     {
-        private Credentials tokenAuth = new Credentials("tokenAuthFromGITHUB");
         private GitHubClient github = new GitHubClient(new ProductHeaderValue("SteamAuthenticator-Updater-Watsuprico"));
         private Version latestInternal = new Version("0.0");
         private IReadOnlyList<Release> releasesInternal;
@@ -40,17 +39,14 @@ namespace SteamAuthenticator.BackEnd
         public UpdateMan(BrowseUpdates own)
         {
             owner = own;
-            github.Credentials = tokenAuth;
         }
         public UpdateMan(MainWindow own)
         {
             owner = own;
-            github.Credentials = tokenAuth;
         }
         public UpdateMan(Downloader own)
         {
             owner = own;
-            github.Credentials = tokenAuth;
         }
         #endregion
 
@@ -149,7 +145,7 @@ namespace SteamAuthenticator.BackEnd
         {
             if (Latest > CurrentVersion)
             {
-                Notifications.Show(Properties.strings.BackEndUpdateManNewUpdateT, String.Format(Properties.strings.BackEndUpdateManNewUpdate,Latest.ToString(), CurrentVersion.ToString()), NotificationIcon.Update, "action=update");
+                Notifications.Show(Properties.strings.BackEndUpdateManNewUpdateT, String.Format(Properties.strings.BackEndUpdateManNewUpdate, Latest.ToString(), CurrentVersion.ToString()), NotificationIcon.Update, "action=update");
                 return true;
             }
             return false;

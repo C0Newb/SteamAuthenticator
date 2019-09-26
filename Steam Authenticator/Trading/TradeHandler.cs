@@ -147,7 +147,7 @@ namespace SteamAuthenticator.Trading
         {
             CleanUp();
             int accountIndex = -1;
-            for (var i = 0; i <= TradeAccounts.Length; i++)
+            for (var i = 0; i < TradeAccounts.Length; i++)
                 if (TradeAccounts[i].Account.AccountName == accountName)
                     accountIndex = i;
 
@@ -156,12 +156,14 @@ namespace SteamAuthenticator.Trading
             Confirmation[] newConfs = new Confirmation[TradeAccounts[accountIndex].Confirmations.Length - 1];
             int j = 0;
 
-            for (var i = 0; i <= TradeAccounts[accountIndex].Confirmations.Length; i++)
+            for (var i = 0; i < TradeAccounts[accountIndex].Confirmations.Length; i++)
                 if (TradeAccounts[accountIndex].Confirmations[i].ID.ToString() != ID)
                 {
                     newConfs[j] = TradeAccounts[accountIndex].Confirmations[i];
                     j++;
                 }
+
+            TradeAccounts[accountIndex].Confirmations = newConfs;
 
             return TradeAccounts[accountIndex];
         }

@@ -26,9 +26,17 @@ namespace SteamAuthenticator.BackEnd
             set {
                 if (!Retreiving)
                 {
-                    SecureKey = value;
-                    IntPtr unsecure = Marshal.SecureStringToGlobalAllocUnicode(value);
-                    UnsecureKey = Marshal.PtrToStringUni(unsecure);
+                    if (value == null) // Added to prevent errors when trying to set the passkey to null (remove it)
+                    {
+                        SecureKey = new SecureString();
+                        UnsecureKey = "";
+                    }
+                    else
+                    {
+                        SecureKey = value;
+                        IntPtr unsecure = Marshal.SecureStringToGlobalAllocUnicode(value);
+                        UnsecureKey = Marshal.PtrToStringUni(unsecure);
+                    }
                 }
             }
         }

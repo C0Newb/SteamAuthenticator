@@ -7,8 +7,8 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-        Title="Settings" Height="345" Width="355" Icon="/Steam Authenticator;component/icon.ico" ResizeMode="CanMinimize" Closing="Window_Closing" WindowStartupLocation="CenterOwner">
-    <!--  Height 355; Width 350  -->
+        Title="Settings" Height="360" Width="355" Icon="/Steam Authenticator;component/icon.ico" ResizeMode="CanMinimize" Closing="Window_Closing" WindowStartupLocation="CenterOwner">
+    <!--  Height 360; Width 350  -->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -44,10 +44,16 @@
 
                     <GridSplitter HorizontalAlignment="Stretch" Height="2" Margin="10,44,10,0" VerticalAlignment="Top"/>
 
-                    <CheckBox x:Name="chkDisplaySearch" Content="Display search field" HorizontalAlignment="Left" Margin="10,54,0,0" Unchecked="Chk_Unchecked" Checked="Chk_Checked" ToolTip="Toggles whether or not the bottom search field is enabled on the main screen" Height="18" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="chkSortAlpha" Visibility="Hidden" Content="Sort accounts alphabetically" HorizontalAlignment="Left" Margin="10,76,0,0" Unchecked="Chk_Unchecked" Checked="Chk_Checked" Height="18" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="chkDisplaySearch" Content="Display search field" HorizontalAlignment="Left" Margin="10,52,0,0" Unchecked="Chk_Unchecked" Checked="Chk_Checked" ToolTip="Toggles whether or not the bottom search field is enabled on the main screen" Height="18" VerticalAlignment="Top"/>
+                    <!--<CheckBox x:Name="chkSortAlpha" Visibility="Hidden" Content="Sort accounts alphabetically" HorizontalAlignment="Left" Margin="10,76,0,0" Unchecked="Chk_Unchecked" Checked="Chk_Checked" Height="18" VerticalAlignment="Top"/>-->
 
-                    <CheckBox x:Name="chkDevMode" Visibility="Hidden" IsEnabled="False" Content="Developer mode (test features)" HorizontalAlignment="Left" Margin="10,98,0,0" Unchecked="Chk_Unchecked" Checked="Chk_Checked" ToolTip="Adds a button on the main window allowing you to test features" Height="18" VerticalAlignment="Top"/>
+                    <GridSplitter HorizontalAlignment="Stretch" Height="2" Margin="10,76,10,0" VerticalAlignment="Top"/>
+
+                    <RadioButton x:Name="radDarkTheme" GroupName="radTheme" Content="Dark Theme" HorizontalAlignment="Left" Margin="10,84,0,0" Checked="Chk_Checked" Height="18" VerticalAlignment="Top"/>
+                    <RadioButton x:Name="radLightTheme" GroupName="radTheme" Content="Light Theme" HorizontalAlignment="Right" Margin="10,84,10,0" Checked="Chk_Checked" Height="18" VerticalAlignment="Top"/>
+
+                    <CheckBox x:Name="chkDevMode" Visibility="Hidden" IsEnabled="False" Content="Developer mode (test features)" HorizontalAlignment="Left" Margin="10,126,0,0" Unchecked="Chk_Unchecked" Checked="Chk_Checked" ToolTip="Adds a button on the main window allowing you to test features" Height="18" VerticalAlignment="Top"/>
+                    
                 </Grid>
             </Grid>
         </ScrollViewer>

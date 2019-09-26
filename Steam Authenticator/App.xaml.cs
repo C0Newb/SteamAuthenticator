@@ -85,7 +85,7 @@ namespace SteamAuthenticator
                     dumpFile.WriteLine("There was an error with Steam Authenticator" + Environment.NewLine + "Here's some info: " + Environment.NewLine + "Version: " + version + Environment.NewLine + "Error: " + err.Message + Environment.NewLine + "Trace: " + err.StackTrace);
                 }
 
-                MessageBoxResult result = MessageBox.Show("An error has occurred! I went ahead and dumped some info into a text file named 'error.txt'. Please report this error so we can fix it! (Include this text file, it's in the same folder as the executable)." + Environment.NewLine + "Error: " + err.Message + "Continue?", "Error", MessageBoxButton.YesNo, MessageBoxImage.Error);
+                MessageBoxResult result = MessageBox.Show("An error has occurred! I went ahead and dumped some info into a text file named 'error.txt'. Please report this error so we can fix it! (Include this text file, it's in the same folder as the executable)." + Environment.NewLine + "Error: " + err.Message + Environment.NewLine + "Continue?", "Error", MessageBoxButton.YesNo, MessageBoxImage.Error);
                 if (result == MessageBoxResult.No)
                 {
                     e.Handled = false;
@@ -106,12 +106,6 @@ namespace SteamAuthenticator
             // Application is running
             if (AlreadyRunning())
                 Environment.Exit(0);
-            // Process command line args
-            for (int i = 0; i != e.Args.Length; ++i)
-            {
-                if (e.Args[i] == "l")
-                    MessageBox.Show("Test");
-            }
 
             MainWindow mainWindow = new MainWindow(e.Args);
             mainWindow.Show();

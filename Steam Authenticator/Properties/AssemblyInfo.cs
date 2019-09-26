@@ -13,7 +13,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Watsuprico.com")]
 [assembly: AssemblyProduct("Steam Authenticator")]
-[assembly: AssemblyCopyright("Copyright ©  2019")]
+[assembly: AssemblyCopyright("Copyright © 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -53,7 +53,7 @@ using System.Windows;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("2.0.0.0")]
-[assembly: AssemblyFileVersion("2.0.0.0")]
+[assembly: AssemblyFileVersion("2.0.0.0001")]
 [assembly: NeutralResourcesLanguage("en")]
 [assembly: Guid("ddad094a-bb27-4630-a930-5a474381d246")]
 
